@@ -1,10 +1,8 @@
 package com.example.music.di
 
-import android.content.Context
 import com.example.music.MainActivity
 import com.example.music.data.remote.ArtistsService
 import com.example.music.di.registration.RegistrationComponent
-import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
 import javax.inject.Singleton

@@ -57,7 +57,6 @@ class AddArtistVM @Inject constructor(
                     repositoryImpl.searchArtists(artistsId, searchQuery).collect { stateArtists ->
                         when (stateArtists) {
                             is MusicResult.Success.Value -> {
-                                Log.d("zxc", "success")
                                 observeArtists(ObserveArtists.Params(artistsId, searchQuery))
                             }
                             else -> {}
@@ -65,9 +64,7 @@ class AddArtistVM @Inject constructor(
                     }
                 }
                 .catch { throwable ->
-                    Log.d("zxc", "catch")
                     uiMessageManager.emitMessage(UiMessage(throwable))
-                    //Log.d("zxc", uiMessageManager.message)
                 }
                 .collect()
         }

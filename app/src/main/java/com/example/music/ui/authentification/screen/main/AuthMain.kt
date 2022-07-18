@@ -1,14 +1,12 @@
 package com.example.music.ui.authentification.screen.main
 
 import android.app.Activity.RESULT_OK
+import android.content.Intent
 import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.*
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.rememberScrollableState
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -22,60 +20,39 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
+import com.example.music.MainActivity
 import com.example.music.R
 import com.example.music.data.repository.auth.AuthResult
 import com.example.music.ui.authentification.RegistrationScreen
 import com.example.music.ui.theme.MusicTheme
-import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.BeginSignInResult
 import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.EmailAuthProvider.getCredential
+import com.google.firebase.auth.GoogleAuthProvider.getCredential
 
 @Composable
 fun AuthMain(
     navController: NavController,
     viewModel: AuthViewModel
 ) {
-    val launcher =  rememberLauncherForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
-        if (result.resultCode == RESULT_OK) {
-            try {
-                val credentials = viewModel.oneTapClient.getSignInCredentialFromIntent(result.data)
-                val googleIdToken = credentials.googleIdToken
-                checkNotNull(googleIdToken) { "googleIdToken null" }
-                val googleCredentials = getCredential(googleIdToken, "")
-                viewModel.signInWithGoogle(googleCredentials)
-            } catch (e: ApiException) {
-                print(e)
-            }
-        }
-    }
+    AuthMainContent(navController, viewModel)
+    val context = LocalContext.current
 
-    fun launch(signInResult: BeginSignInResult) {
-        val intent = IntentSenderRequest.Builder(signInResult.pendingIntent.intentSender).build()
-        launcher.launch(intent)
-    }
-
-    when(val oneTapSignInResponse = viewModel.oneTapSignInState.value) {
+    when(viewModel.signInState.value) {
         is AuthResult.Success -> {
-            oneTapSignInResponse.data?.let {
-                LaunchedEffect(it) {
-                    launch(it)
-                }
-            }
+            Log.d("zxc","signInState Success")
+            context.startActivity(Intent(context, MainActivity::class.java))
         }
-        is AuthResult.Fail -> {
-            Log.d("zxc", "Fail")
+        else -> {
+            Log.d("zxc","signInState fail")
         }
     }
-
-    AuthMainContent(navController)
 }
 
 @Composable
 fun AuthMainContent(
-    navController: NavController
+    navController: NavController,
+    viewModel: AuthViewModel
 ) {
     val painter = painterResource(id = R.drawable.ic_launcher_foreground)
     Column(
@@ -105,14 +82,15 @@ fun AuthMainContent(
         }
 
         Box(modifier = Modifier.weight(1f)) {
-            MainBottomContent(navController)
+            MainBottomContent(navController, viewModel)
         }
     }
 }
 
 @Composable
 fun MainBottomContent(
-    navController: NavController
+    navController: NavController,
+    viewModel: AuthViewModel
 ) {
     val scrollableState = rememberScrollState()
     Column(
@@ -132,13 +110,14 @@ fun MainBottomContent(
             )
         )
 
-        MainButtons(navController)
+        MainButtons(navController, viewModel)
     }
 }
 
 @Composable
 fun MainButtons(
-    navController: NavController
+    navController: NavController,
+    viewModel: AuthViewModel
 ) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Button(
@@ -156,7 +135,7 @@ fun MainButtons(
             )
         }
 
-        GoogleButton()
+        GoogleButton(viewModel)
 
         Button(
             onClick = {
@@ -172,9 +151,50 @@ fun MainButtons(
 }
 
 @Composable
-fun GoogleButton() {
+fun GoogleButton(
+    viewModel: AuthViewModel
+) {
+
+    val launcher =  rememberLauncherForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
+        Log.d("zxc", "launcher")
+        if (result.resultCode == RESULT_OK) {
+            try {
+                val credentials = viewModel.oneTapClient.getSignInCredentialFromIntent(result.data)
+                val googleIdToken = credentials.googleIdToken
+                checkNotNull(googleIdToken) {
+                    Log.d("zxc","googleIdToken null")
+                }
+                val googleCredentials = getCredential(googleIdToken, null)
+                viewModel.signInWithGoogle(googleCredentials)
+            } catch (e: ApiException) {
+                Log.d("zxc", "launcher: $e")
+            }
+        }
+    }
+
+    fun launch(signInResult: BeginSignInResult) {
+        val intent = IntentSenderRequest.Builder(signInResult.pendingIntent.intentSender).build()
+        launcher.launch(intent)
+    }
+
+    when(val oneTapSignInResponse = viewModel.oneTapSignInState.value) {
+        is AuthResult.Success -> {
+            Log.d("zxc", "success")
+            oneTapSignInResponse.data?.let {
+                LaunchedEffect(it) {
+                    launch(it)
+                }
+            }
+        }
+        is AuthResult.Fail -> {
+            Log.d("zxc", "Fail")
+        }
+    }
+
     Button(
-        onClick = { /*TODO*/ },
+        onClick = {
+            viewModel.oneTapSignIn()
+        },
         colors = ButtonDefaults.buttonColors(
             containerColor = Color.Transparent,
         ),
@@ -202,8 +222,8 @@ fun GoogleButton() {
 @Composable
 fun DefaultPreview() {
     MusicTheme {
-        AuthMainContent(
-            navController = NavController(LocalContext.current)
-        )
+        /*AuthMainContent(
+            navController = NavController(LocalContext.current),
+        )*/
     }
 }

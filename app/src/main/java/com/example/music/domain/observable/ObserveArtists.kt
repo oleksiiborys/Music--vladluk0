@@ -4,6 +4,7 @@ import com.example.music.data.model.artist.Artist
 import com.example.music.data.remote.RemoteArtistDaraSource
 import com.example.music.util.SubjectInjector
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class ObserveArtists @Inject constructor(

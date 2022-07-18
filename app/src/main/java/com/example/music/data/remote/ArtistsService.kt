@@ -20,13 +20,11 @@ interface ArtistsService {
     @Headers(
         "Accept: application/json",
         "Content-Type: application/json",
-        "Authorization: Bearer BQCnxTrFso1_qnjAF1Z-pgcyJhyJNEjIJKLjVx2d1qgfYzeTjgbrZPcqf9g4ptuJIJrNMHKiLFD0LEdI3G0-kr7vk46dyDyxrPPfSlPypUGIjqYfttOHY563CMJs4S3cSJE2VbcVAwWsnqSgMHRAI5WXsrDuCrPYP9qNZQzK12PkSKkivfPhMxq69PcMSoNV5vASRfYtYHl2pxv5p3d1hbe0IN_sGvaMZnGw7fbb",
+        "Authorization: Bearer BQA-apn2omHeityUI15Qww4nl95FGONXR8EPpQTI-wU3u5L8mymGHPkFufDM84hqzmR9Db38PoqDq3f_u6URA7g3PV-aGvmb2aYrVQsJbKGLu4_5ls1z3bCzKrxd_uJ8Uiw3vA5df_EEYoy70NHAJlx-pE_kEr7wC1PbZY6COJY0nxbc7mbnB1B6tXGyKxvkRI0-tbg7",
         /*"X-RapidAPI-Host: spotify23.p.rapidapi.com"*/
     )
     @GET("artists/")
     suspend fun fetchArtists(@Query("ids", encoded = true) ids: String): Response<Artists>
-
-
 }
 
 

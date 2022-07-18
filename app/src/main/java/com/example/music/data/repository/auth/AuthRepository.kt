@@ -1,5 +1,6 @@
 package com.example.music.data.repository.auth
 
+import android.util.Log
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.firebase.auth.AuthCredential
@@ -20,17 +21,19 @@ class AuthRepository @Inject constructor(
             val result = oneTapSignInClient.beginSignIn(signInRequest).await()
             emit(AuthResult.Success(result))
         } catch (exception: Exception) {
+            Log.d("zxc", exception.toString())
             emit(AuthResult.Fail)
         }
-
     }.flowOn(Dispatchers.IO)
 
     suspend fun firebaseSignInWithGoogle(googleCredential: AuthCredential) = flow {
         try {
             val authResult = auth.signInWithCredential(googleCredential).await()
             val isNewUser = authResult.additionalUserInfo?.isNewUser
+            Log.d("zxc", "Success isNewUser")
             emit(AuthResult.Success(isNewUser))
         } catch (e: Exception) {
+            Log.d("zxc", "Fail isNewUser")
             emit(AuthResult.Fail)
         }
     }

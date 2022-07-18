@@ -1,5 +1,6 @@
 package com.example.music.ui.authentification.screen.main
 
+import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -18,7 +19,7 @@ class AuthViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _signInState =
-        mutableStateOf<AuthResult<Boolean>>(AuthResult.Success(null))
+        mutableStateOf<AuthResult<Boolean>>(AuthResult.Fail)
     val signInState: State<AuthResult<Boolean>> = _signInState
 
     private val _oneTapSignInState =
@@ -32,8 +33,15 @@ class AuthViewModel @Inject constructor(
     }
 
     fun signInWithGoogle(googleCredential: AuthCredential) = viewModelScope.launch {
+        Log.d("zxc", "signInWithGoogle")
         authRepository.firebaseSignInWithGoogle(googleCredential).collect { response ->
             _signInState.value = response
+        }
+    }
+
+    fun oneTapSignIn() = viewModelScope.launch {
+        authRepository.onTapSignInWithGoogle().collect { response ->
+            _oneTapSignInState.value = response
         }
     }
 }

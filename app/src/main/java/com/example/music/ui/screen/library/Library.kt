@@ -33,12 +33,13 @@ import com.example.music.Screen
 import com.example.music.ui.screen.add_artist.AddArtist
 import com.example.music.ui.theme.MusicTheme
 import com.example.music.ui.theme.roundedIcon
+import com.example.music.util.composeViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Library(
     addNewArtist: () -> Unit,
-    viewModel: LibraryVM
+    viewModel: LibraryVM /*= composeViewModel()*/
 ) {
     Scaffold(
         topBar = {
@@ -151,7 +152,6 @@ fun AddNewArtist(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .clickable {
-                Log.d("zxc", "clickable")
                 addNewArtist.invoke()
             }
             .fillMaxWidth()

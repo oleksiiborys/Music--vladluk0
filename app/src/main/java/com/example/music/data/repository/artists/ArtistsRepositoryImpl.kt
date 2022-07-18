@@ -1,5 +1,6 @@
 package com.example.music.data.repository.artists
 
+import android.util.Log
 import com.example.music.data.model.artist.Artist
 import com.example.music.data.remote.RemoteArtistDaraSource
 import kotlinx.coroutines.Dispatchers
@@ -29,11 +30,15 @@ class ArtistsRepositoryImpl @Inject constructor(
 
     fun searchArtists(artistsId: String, query: String): Flow<MusicResult<List<Artist>>> {
         return flow {
-            val artistsList: Flow<List<Artist>> = remoteArtistDaraSource.searchArtists(artistsId, "")
-            artistsList.map { artists ->
-                if (artists.isEmpty())
+            val artistsList: Flow<List<Artist>> = remoteArtistDaraSource.searchArtists(artistsId, query)
+            Log.d("zxc", "ArtistsRepositoryImpl searchArtists artistsList: $artistsList")
+            artistsList.collect { artists ->
+                if (artists.isEmpty()) {
+                    Log.d("zxc", "ArtistsRepositoryImpl searchArtists empty")
                     emit(MusicResult.Error(message = "No data"))
+                }
                 else {
+                    Log.d("zxc", "ArtistsRepositoryImpl searchArtists Success")
                     emit(MusicResult.Success.Value(artists))
                 }
             }
