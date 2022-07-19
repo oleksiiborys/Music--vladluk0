@@ -155,8 +155,7 @@ fun GoogleButton(
     viewModel: AuthViewModel
 ) {
 
-    val launcher =  rememberLauncherForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
-        Log.d("zxc", "launcher")
+    val launcher = rememberLauncherForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
         if (result.resultCode == RESULT_OK) {
             try {
                 val credentials = viewModel.oneTapClient.getSignInCredentialFromIntent(result.data)

@@ -27,6 +27,7 @@ interface ApplicationComponent {
     includes = [
         NetworkModule::class,
         FirebaseModule::class,
+        FirestoreModule::class,
         AppSubComponent::class
     ]
 )

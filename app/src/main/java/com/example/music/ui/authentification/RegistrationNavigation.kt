@@ -79,7 +79,13 @@ fun NavGraphBuilder.addFreePassword(
     ) { backStackEntry ->
         val mail = backStackEntry.arguments?.getString("mail")
         checkNotNull(mail) { "mail in null" }
-        FreeRegistrationPassword(navController, mail)
+
+        val context = LocalContext.current
+        val registrationComponent = context.registrationComponent
+        checkNotNull(registrationComponent) { "registrationComponent null" }
+        val viewModel = registrationComponent.factory.create(AuthViewModel::class.java)
+
+        FreeRegistrationPassword(navController, viewModel, mail)
     }
 }
 

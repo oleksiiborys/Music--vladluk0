@@ -72,7 +72,6 @@ class AddArtistVM @Inject constructor(
 
     fun search(query: String) {
         searchQuery.value = query
-        Log.d("zxc", query)
     }
 
     fun snackBarShown(id: Long) {

@@ -72,9 +72,9 @@ fun EmailField(
 @Composable
 fun FreeRegistrationPreview() {
     MusicTheme {
-        FreeRegistrationPassword(
+        /*FreeRegistrationPassword(
             navController = NavController(LocalContext.current),
             email = ""
-        )
+        )*/
     }
 }
