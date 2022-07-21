@@ -56,7 +56,7 @@ class AuthRepository @Inject constructor(
         auth.currentUser?.uid.let { id ->
             firestore
                 .collection("users")
-                .add()
+
         }
     }
 }

@@ -28,39 +28,8 @@ class MainActivity : ComponentActivity() {
     val db = Firebase.firestore
     val auth = Firebase.auth
 
-    protected val currentUser: FirebaseUser?
-        get() = auth.currentUser
-
-    val user = hashMapOf(
-        "first" to "Ada",
-        "last" to "Lovelace",
-        "born" to 1815
-    )
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Add a new document with a generated ID
-        db.collection("users")
-            .add(user)
-            .addOnSuccessListener { documentReference ->
-                Log.d("zxc", "DocumentSnapshot added with ID: ${documentReference.id}")
-            }
-            .addOnFailureListener { e ->
-                Log.w("zxc", "Error adding document", e)
-            }
-
-        db.collection("users")
-            .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    Log.d("zxc", "${document.id} => ${document.data}")
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.w("zxc", "Error getting documents.", exception)
-            }
-
         setContent {
 
             MusicTheme {
@@ -70,6 +39,7 @@ class MainActivity : ComponentActivity() {
                     //color = MaterialTheme.colorScheme.background
                 ) {
                     //AddArtist(viewModel = viewModel)
+
                     Home()
                 }
             }

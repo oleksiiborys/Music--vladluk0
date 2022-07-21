@@ -1,9 +1,10 @@
 package com.example.music.data.remote
 
-import android.util.Log
 import com.example.music.data.model.artist.Artist
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 class RemoteArtistDaraSource @Inject constructor(

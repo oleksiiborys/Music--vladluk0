@@ -14,3 +14,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Music"
 include ':app'
+include ':navigation'
+include ':module-injector'
+include ':addArtist'
+include ':core-network'

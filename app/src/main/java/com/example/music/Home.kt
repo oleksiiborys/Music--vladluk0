@@ -1,6 +1,5 @@
 package com.example.music
 
-import android.util.Log
 import androidx.annotation.DrawableRes
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.*
@@ -12,7 +11,6 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.rememberNavController
-import com.example.music.di.ApplicationComponent
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalAnimationApi::class)
 @Composable
@@ -72,29 +70,29 @@ fun HomeBottomNavigation(
     }
 }
 
-data class NavigationItem(
+data class NavigationItemMulti(
     @DrawableRes val image: Int,
     val text: String,
     val screen: Screen
 )
 
 val items = listOf(
-    NavigationItem(
+    NavigationItemMulti(
         R.drawable.ic_baseline_home_24,
         "Головна",
         Screen.Main
     ),
-    NavigationItem(
+    NavigationItemMulti(
         R.drawable.ic_baseline_search_24,
         "Пошук",
         Screen.Search
     ),
-    NavigationItem(
+    NavigationItemMulti(
         R.drawable.ic_baseline_library_music_24,
         "Бібліотека",
         Screen.Library
     ),
-    NavigationItem(
+    NavigationItemMulti(
         R.drawable.ic_baseline_premium_24,
         "Premium",
         Screen.Premium
