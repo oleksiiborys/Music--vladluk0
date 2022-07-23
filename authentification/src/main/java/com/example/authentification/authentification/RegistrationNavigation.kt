@@ -1,25 +1,42 @@
-package com.example.music.app_navigation
+package com.example.authentification.authentification
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
-import androidx.navigation.*
+import androidx.navigation.NavController
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.music.Screen
-import com.example.authentification.authentification.RegistrationScreen
-import com.example.authentification.authentification.registrationComponent
 import com.example.authentification.authentification.screen.free_registration.FreeRegistrationMail
 import com.example.authentification.authentification.screen.free_registration.FreeRegistrationPassword
 import com.example.authentification.authentification.screen.log_in.LogIn
 import com.example.authentification.authentification.screen.main.AuthMain
 import com.example.authentification.authentification.screen.main.AuthViewModel
 
+sealed class RegistrationScreen(val route: String) {
+
+    open fun createRoute(root: RegistrationScreen) = "${root.route}/$route"
+
+    object Main : RegistrationScreen("main")
+
+    object FreeMail : RegistrationScreen("main/free")
+
+    object FreePassword : RegistrationScreen("main/free/mail/{mail}/password") {
+        fun createRoute(mail: String): String {
+            return "main/free/mail/$mail/password"
+        }
+    }
+
+    object LogIn : RegistrationScreen("main/login")
+}
 
 @Composable
 fun RegistrationNavigation(
-    navController: NavHostController,
-    navHost: NavHost
+    navController: NavHostController
 ) {
-    navHost.createGraph(
+    NavHost(
+        navController = navController,
         startDestination = RegistrationScreen.Main.route
     ) {
         addMain(navController)

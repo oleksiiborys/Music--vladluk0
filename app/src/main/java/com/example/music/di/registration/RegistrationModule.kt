@@ -1,11 +1,9 @@
 package com.example.music.di.registration
 
 import android.content.Context
-import android.content.res.Resources
 import androidx.lifecycle.ViewModel
-import com.example.music.R
 import com.example.music.di.ViewModelKey
-import com.example.music.ui.authentification.screen.main.AuthViewModel
+import com.example.authentification.authentification.screen.main.AuthViewModel
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient

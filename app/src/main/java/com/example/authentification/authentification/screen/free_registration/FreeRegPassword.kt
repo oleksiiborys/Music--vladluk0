@@ -1,4 +1,4 @@
-package com.example.music.ui.authentification.screen.free_registration
+package com.example.authentification.authentification.screen.free_registration
 
 import android.content.Intent
 import android.util.Log
@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.music.MainActivity
 import com.example.music.data.repository.auth.AuthResult
-import com.example.music.ui.authentification.screen.main.AuthViewModel
+import com.example.authentification.authentification.screen.main.AuthViewModel
 import com.example.music.ui.common.field.PasswordField
 import com.example.music.ui.common.top_bar.SimpleAppBar
 import com.example.music.ui.theme.MusicTheme

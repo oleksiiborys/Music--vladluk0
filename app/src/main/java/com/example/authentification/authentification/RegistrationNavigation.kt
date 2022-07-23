@@ -1,4 +1,4 @@
-package com.example.music.ui.authentification
+package com.example.authentification.authentification
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
@@ -8,12 +8,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.music.Screen
-import com.example.music.appComponent
-import com.example.music.ui.authentification.screen.free_registration.FreeRegistrationMail
-import com.example.music.ui.authentification.screen.free_registration.FreeRegistrationPassword
-import com.example.music.ui.authentification.screen.log_in.LogIn
-import com.example.music.ui.authentification.screen.main.AuthMain
-import com.example.music.ui.authentification.screen.main.AuthViewModel
+import com.example.authentification.authentification.screen.free_registration.FreeRegistrationMail
+import com.example.authentification.authentification.screen.free_registration.FreeRegistrationPassword
+import com.example.authentification.authentification.screen.log_in.LogIn
+import com.example.authentification.authentification.screen.main.AuthMain
+import com.example.authentification.authentification.screen.main.AuthViewModel
 
 sealed class RegistrationScreen(val route: String) {
 

@@ -1,4 +1,4 @@
-package com.example.music.ui.authentification.screen.log_in
+package com.example.authentification.authentification.screen.log_in
 
 import android.content.Intent
 import android.util.Log

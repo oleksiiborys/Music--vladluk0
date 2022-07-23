@@ -5,7 +5,6 @@ import com.example.music.data.repository.artists.ArtistsRepository
 import com.example.music.data.repository.artists.ArtistsRepositoryImpl
 import com.example.music.di.screen.ScreenScope
 import com.example.music.di.util.MultiViewModelFactory
-import com.example.music.ui.authentification.screen.main.AuthViewModel
 import com.example.music.ui.screen.add_artist.AddArtistVM
 import com.example.music.ui.screen.library.LibraryVM
 import dagger.Binds

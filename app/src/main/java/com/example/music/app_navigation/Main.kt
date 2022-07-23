@@ -17,9 +17,9 @@ import com.example.music.ui.screen.library.LibraryVM
 import com.example.music.ui.screen.main.Main
 import com.example.music.ui.screen.premium.Premium
 import com.example.music.ui.screen.search.Search
-import com.example.navigation.MainScreen
 
-@ExperimentalAnimationApi
+
+/*@ExperimentalAnimationApi
 @Composable
 internal fun MainNavigation(
     navController: NavHostController,
@@ -142,4 +142,4 @@ fun NavGraphBuilder.addArtistList(
         val viewModel = screenComponent.factory.create(AddArtistVM::class.java)
         AddArtist(viewModel)
     }
-}
+}*/

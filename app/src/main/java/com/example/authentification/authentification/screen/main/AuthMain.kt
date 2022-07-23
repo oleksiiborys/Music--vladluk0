@@ -1,4 +1,4 @@
-package com.example.music.ui.authentification.screen.main
+package com.example.authentification.authentification.screen.main
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
@@ -24,7 +24,7 @@ import androidx.navigation.NavController
 import com.example.music.MainActivity
 import com.example.music.R
 import com.example.music.data.repository.auth.AuthResult
-import com.example.music.ui.authentification.RegistrationScreen
+import com.example.authentification.authentification.RegistrationScreen
 import com.example.music.ui.theme.MusicTheme
 import com.google.android.gms.auth.api.identity.BeginSignInResult
 import com.google.android.gms.common.api.ApiException

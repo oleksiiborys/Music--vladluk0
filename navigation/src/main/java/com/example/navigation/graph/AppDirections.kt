@@ -1,37 +1,66 @@
 package com.example.navigation
 
-sealed class MainScreen(
-    val route: String
-) {
-    open fun createRoute(root: MainScreen) = "${root.route}/$route"
+import androidx.navigation.NamedNavArgument
 
-    object Main : MainScreen("main")
-    object Search : MainScreen("search")
-    object Library : MainScreen("library")
-    object Premium : MainScreen("premium")
-    object Default : MainScreen("")
+interface NavigationCommand {
+    val arguments: List<NamedNavArgument>?
+    val destination: String
+}
 
-    object AddNewArtist: MainScreen("artistlist") {
-        override fun createRoute(root: MainScreen): String {
-            return "${root.route}/artistlist"
-        }
+object MainNavigation {
+
+    val main = object : NavigationCommand {
+        override val arguments: List<NamedNavArgument>?
+            get() = null
+        override val destination: String
+            get() = "main"
+    }
+
+    val search = object : NavigationCommand {
+        override val arguments: List<NamedNavArgument>?
+            get() = null
+        override val destination: String
+            get() = "search"
+    }
+
+    val library = object : NavigationCommand {
+        override val arguments: List<NamedNavArgument>?
+            get() = null
+        override val destination: String
+            get() = "library"
+    }
+
+    val premium = object : NavigationCommand {
+        override val arguments: List<NamedNavArgument>?
+            get() = null
+        override val destination: String
+            get() = "premium"
     }
 }
 
-sealed class RegistrationScreen(val route: String) {
+sealed class Screen(
+    val route: String
+) {
+    object Main : Screen("main")
+    object Search : Screen("search")
+    object Library : Screen("library")
+    object Premium : Screen("premium")
+}
 
-    open fun createRoute(root: RegistrationScreen) = "${root.route}/$route"
+private sealed class LeafScreen(
+    private val route: String
+) {
+    open fun createRoute(root: Screen) = "${root.route}/$route"
 
-    object Main : RegistrationScreen("main")
+    object Main : LeafScreen("main")
+    object Search : LeafScreen("search")
+    object Library : LeafScreen("library")
+    object Premium : LeafScreen("premium")
 
-    object FreeMail : RegistrationScreen("main/free")
-
-    object FreePassword : RegistrationScreen("main/free/mail/{mail}/password") {
-        fun createRoute(mail: String): String {
-            return "main/free/mail/$mail/password"
+    object AddNewArtist: LeafScreen("artistlist") {
+        override fun createRoute(root: Screen): String {
+            return "${root.route}/artistlist"
         }
     }
-
-    object LogIn : RegistrationScreen("main/login")
 }
 

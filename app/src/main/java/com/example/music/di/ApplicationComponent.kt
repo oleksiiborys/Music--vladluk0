@@ -3,8 +3,10 @@ package com.example.music.di
 import com.example.music.MainActivity
 import com.example.music.data.remote.ArtistsService
 import com.example.music.di.registration.RegistrationComponent
+import com.example.navigation.graph.NavigationManager
 import dagger.Component
 import dagger.Module
+import dagger.Provides
 import javax.inject.Singleton
 
 @Singleton
@@ -31,7 +33,12 @@ interface ApplicationComponent {
         AppSubComponent::class
     ]
 )
-interface AppModule
+class AppModule {
+
+    @Singleton
+    @Provides
+    fun provideNavigationManager() = NavigationManager()
+}
 
 @Module(
     subcomponents = [RegistrationComponent::class]

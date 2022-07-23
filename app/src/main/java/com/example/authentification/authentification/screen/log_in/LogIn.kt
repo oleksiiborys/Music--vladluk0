@@ -1,6 +1,7 @@
-package com.example.music.ui.authentification.screen.free_registration
+package com.example.authentification.authentification.screen.log_in
 
-import android.icu.text.UnicodeSetIterator
+import android.content.Intent
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -12,21 +13,23 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.music.ui.authentification.RegistrationScreen
+import com.example.music.MainActivity
 import com.example.music.ui.common.field.EmailField
+import com.example.music.ui.common.field.PasswordField
 import com.example.music.ui.common.top_bar.SimpleAppBar
 import com.example.music.ui.theme.MusicTheme
+import com.example.music.ui.theme.padding
+import com.google.firebase.auth.FirebaseAuth
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FreeRegistrationMail(
+fun LogIn(
     navController: NavController
 ) {
     Scaffold(
         topBar = {
             SimpleAppBar(
                 navController,
-                title = "Створення акаунту"
             )
         }
     ) { paddingValues ->
@@ -36,50 +39,62 @@ fun FreeRegistrationMail(
                 .fillMaxSize()
                 .background(Color.Black)
         ) {
-            FreeMailContent(navController)
+            LogInContent()
         }
     }
 }
 
 @Composable
-fun FreeMailContent(
-    navController: NavController
+fun LogInContent(
+
 ) {
     var mail by remember {
         mutableStateOf("")
     }
 
-    Column {
+    var password by remember {
+        mutableStateOf("")
+    }
+
+    val context = LocalContext.current
+
+    Column(
+        modifier = Modifier.padding(
+            start = MaterialTheme.padding.start,
+            end = MaterialTheme.padding.end
+        ),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         EmailField(
             modifier = Modifier.padding(
                 top = 50.dp
             ),
-            textField = "Укажіть адресу електронної пошти",
-            onEmailChange = {
-                mail = it
-            },
+            textField = "Адреса Електронної пошти",
+            onEmailChange = { mail = it},
             mail = mail
         )
 
-        ButtonNext(
-            onNextClick = {
-                navController.navigate(RegistrationScreen.FreePassword.createRoute(mail))
-            },
+        PasswordField(
+            modifier = Modifier.padding(
+                top = 30.dp
+            ),
+            textField = "Пароль",
+            onEmailChange = { password = it},
+            password = password
         )
-    }
-}
 
-@Composable
-fun ButtonNext(
-    onNextClick: () -> Unit,
-) {
-    Column(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
         Button(
             onClick = {
-                onNextClick.invoke()
+                Log.d("zxc", "$mail $password")
+                FirebaseAuth.getInstance().signInWithEmailAndPassword(
+                    mail,
+                    password
+                ).addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Log.d("zxc", "success")
+                        context.startActivity(Intent(context, MainActivity::class.java))
+                    }
+                }
             },
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color.Gray
@@ -89,19 +104,18 @@ fun ButtonNext(
             )
         ) {
             Text(
-                text = "Далі",
+                text = "Увійти",
                 color = Color.Black
             )
         }
     }
-
 }
 
 @Preview(showSystemUi = true)
 @Composable
 fun DefaultPreview() {
     MusicTheme {
-        FreeRegistrationMail(
+        LogIn(
             navController = NavController(LocalContext.current)
         )
     }

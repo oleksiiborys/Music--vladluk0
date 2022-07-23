@@ -1,12 +1,13 @@
 package com.example.navigation.graph
 
+import com.example.navigation.NavigationCommand
 import kotlinx.coroutines.flow.MutableStateFlow
 
 class NavigationManager {
 
-    val navigationState = MutableStateFlow("")
+    val navigationState = MutableStateFlow(AuthenticationDirections.Default)
 
-    fun navigate(route: String) {
-        navigationState.value = route
+    fun navigate(navigationCommand: NavigationCommand) {
+        navigationState.value = navigationCommand
     }
 }
