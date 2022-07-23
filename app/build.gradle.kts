@@ -6,30 +6,31 @@ plugins {
 }
 
 android {
-    val compileSdk = 32
+    compileSdk = 32
 
     defaultConfig {
-        val applicationId = "com.example.music"
-        val minSdk = 21
-        val targetSdk = 32
-        val versionCode = 1
-        val versionName = "1.0"
+        applicationId = "com.example.music"
+        minSdk = 21
+        targetSdk = 32
+        versionCode = 1
+        versionName = "1.0"
 
-        val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
-            val useSupportLibrary = true
+            useSupportLibrary = true
         }
     }
 
     buildTypes {
-        release {
-            val minifyEnabled = false
+        getByName("release") {
+            isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+
     compileOptions {
-        val sourceCompatibility = JavaVersion.VERSION_1_8
-        val targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = "1.8"
@@ -38,18 +39,17 @@ android {
 
     }
     buildFeatures {
-        val compose = true
+        compose = true
     }
+
     composeOptions {
-        val kotlinCompilerExtensionVersion = "1.3.0-alpha01"
+        kotlinCompilerExtensionVersion = libs.versions.composeUi.get()
     }
     packagingOptions {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-
-
 }
 
 dependencies {
@@ -76,5 +76,4 @@ dependencies {
     implementation(libs.firebaseFireStore)
     implementation(libs.coroutinesPlayService)
     implementation(libs.authPlayService)
-
 }
