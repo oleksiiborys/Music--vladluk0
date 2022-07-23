@@ -1,13 +1,51 @@
 [versions]
-composeVersion = "1.3.0-alpha01"
-
+composeUi = "1.3.0-alpha01"
+composeMaterial = "1.0.0-alpha14"
+composeActivity = "1.5.0"
+composeConstraint = "1.1.0-alpha03"
+composeViewModel = "2.6.0-alpha01"
+composeLiveData = "1.3.0-alpha01"
+composeNavigation = "1.3.0-alpha01"
+composeCoil = "2.1.0"
+androidXCore = "1.8.0"
+androidXLifecycle = "2.5.0"
+retrofit = "2.9.0"
+dagger = "2.42"
+accompanistSwipeRefresh = "0.24.11-rc"
+firebaseBom = "30.3.0"
+coroutinesPlayService = "1.6.1"
+authPlayService = "20.2.0"
 
 [libraries]
 
-composeUi = { module = "androidx.compose.ui:ui", version.ref = "composeVersion" }
-composeTooling = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "composeVersion" }
+composeUi = { module = "androidx.compose.ui:ui", version.ref = "composeUi" }
+composeActivity = { module = "androidx.activity:activity-compose", version.ref = "composeActivity" }
+composeTooling = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "composeUi" }
+composeConstraint = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "composeConstraint" }
+composeMaterial = { module = "androidx.compose.material3:material3", version.ref = "composeMaterial" }
+composeViewModel = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "composeViewModel" }
+composeLiveData = { module = "androidx.compose.runtime:runtime-livedata", version.ref = "composeLiveData" }
+composeNavigation = { module = "androidx.navigation:navigation-compose", version.ref = "composeNavigation" }
+composeCoil = { module = "io.coil-kt:coil-compose", version.ref = "composeCoil" }
+composeMaterialWindowSize = { module = "androidx.compose.material3:material3-window-size-class", version.ref = "composeMaterial" }
+androidXCore = { module = "androidx.core:core-ktx", version.ref = "androidXCore" }
+androidXLifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidXLifecycle" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+retrofitConverter = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
+daggerCompiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
+accompanistSwipeRefresh = { module = "com.google.accompanist:accompanist-swiperefresh", version.ref = "accompanistSwipeRefresh" }
+firebaseAuth = { module = "com.google.firebase:firebase-auth-ktx"}
+firebaseFireStore = { module = "com.google.firebase:firebase-analytics-ktx"}
+firebaseAnalytics = { module = "com.google.firebase:firebase-firestore-ktx"}
+firebaseBom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+coroutinesPlayService = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services", version.ref = "coroutinesPlayService" }
+authPlayService = { module = "com.google.android.gms:play-services-auth", version.ref = "authPlayService" }
 
 
 [bundles]
 
-compose = ["composeUi", "composeTooling"]
+compose = ["composeUi", "composeTooling", "composeViewModel"]
+composeMaterial = ["composeMaterial", "composeMaterialWindowSize"]
+retrofit = ["retrofit", "retrofitConverter"]
+dagger = ["dagger", "daggerCompiler"]
