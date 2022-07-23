@@ -1,0 +1,13 @@
+[versions]
+composeVersion = "1.3.0-alpha01"
+
+
+[libraries]
+
+composeUi = { module = "androidx.compose.ui:ui", version.ref = "composeVersion" }
+composeTooling = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "composeVersion" }
+
+
+[bundles]
+
+compose = ["composeUi", "composeTooling"]
