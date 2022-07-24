@@ -3,21 +3,12 @@ package com.example.music
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import com.example.music.di.DaggerScreenComponent
-import com.example.music.ui.screen.add_artist.AddArtist
-import com.example.music.ui.screen.add_artist.AddArtistVM
-import com.example.music.ui.screen.library.Library
-import com.example.music.ui.screen.library.LibraryVM
-import com.example.music.ui.screen.main.Main
-import com.example.music.ui.screen.premium.Premium
-import com.example.music.ui.screen.search.Search
 
 sealed class Screen(
     val route: String
@@ -115,7 +106,7 @@ fun NavGraphBuilder.addMain(
     composable(
         route = LeafScreen.Main.createRoute(root),
     ) {
-        Main()
+        //Main()
     }
 }
 
@@ -126,14 +117,14 @@ fun NavGraphBuilder.addLibrary(
     composable(
         route = LeafScreen.Library.createRoute(root),
     ) {
-        val screenComponent = DaggerScreenComponent.factory().create(LocalContext.current.appComponent)
+        /*val screenComponent = DaggerScreenComponent.factory().create(LocalContext.current.appComponent)
         val viewModel = screenComponent.factory.create(LibraryVM::class.java)
         Library(
             viewModel = viewModel,
             addNewArtist = {
                 navController.navigate(LeafScreen.AddNewArtist.createRoute(root))
             }
-        )
+        )*/
     }
 }
 
@@ -144,7 +135,7 @@ fun NavGraphBuilder.addSearch(
     composable(
         route = LeafScreen.Search.createRoute(root),
     ) {
-        Search()
+        //Search()
     }
 }
 
@@ -152,24 +143,24 @@ fun NavGraphBuilder.addPremium(
     navController: NavController,
     root: Screen
 ) {
-    composable(
+    /*composable(
         route = LeafScreen.Premium.createRoute(root),
     ) {
         Premium()
-    }
+    }*/
 }
 
 fun NavGraphBuilder.addArtistList(
     navController: NavController,
     root: Screen
 ) {
-    composable(
+    /*composable(
         route = LeafScreen.AddNewArtist.createRoute(root),
     ) {
         val screenComponent = DaggerScreenComponent.factory().create(LocalContext.current.appComponent)
         val viewModel = screenComponent.factory.create(AddArtistVM::class.java)
         AddArtist(viewModel)
-    }
+    }*/
 }
 
 /*fun NavGraphBuilder.addNewArtist(

@@ -13,12 +13,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.music.MainActivity
 import com.example.music.ui.common.field.EmailField
 import com.example.music.ui.common.field.PasswordField
 import com.example.music.ui.common.top_bar.SimpleAppBar
 import com.example.music.ui.theme.MusicTheme
-import com.example.music.ui.theme.padding
 import com.google.firebase.auth.FirebaseAuth
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -60,8 +58,8 @@ fun LogInContent(
 
     Column(
         modifier = Modifier.padding(
-            start = MaterialTheme.padding.start,
-            end = MaterialTheme.padding.end
+            start = 10.dp/*MaterialTheme.padding.start*/,
+            end = 10.dp/*MaterialTheme.padding.end*/
         ),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -92,7 +90,7 @@ fun LogInContent(
                 ).addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Log.d("zxc", "success")
-                        context.startActivity(Intent(context, MainActivity::class.java))
+                        //context.startActivity(Intent(context, MainActivity::class.java))
                     }
                 }
             },

@@ -1,13 +1,16 @@
 [versions]
+
 android = "7.2.1"
-kotlin = "1.6.21"
+kotlin = "1.7.0"
 composeUi = "1.3.0-alpha01"
+composeCompiler = "1.2.0"
+comopseTooling = "1.1.1"
 composeMaterial = "1.0.0-alpha14"
 composeActivity = "1.5.0"
 composeConstraint = "1.1.0-alpha03"
 composeViewModel = "2.6.0-alpha01"
 composeLiveData = "1.3.0-alpha01"
-composeNavigation = "1.3.0-alpha01"
+composeNavigation = "2.5.0"
 composeCoil = "2.1.0"
 androidXCore = "1.8.0"
 androidXLifecycle = "2.5.0"
@@ -15,15 +18,19 @@ retrofit = "2.9.0"
 dagger = "2.42"
 accompanistSwipeRefresh = "0.24.11-rc"
 firebaseBom = "30.3.0"
+fireStore = "24.2.1"
+firebaseAuth= "21.0.6"
+firebaseAnalytics = "21.1.0"
 coroutinesPlayService = "1.6.1"
 authPlayService = "20.2.0"
-
+coroutines = "1.1.1"
 
 [libraries]
 
 composeUi = { module = "androidx.compose.ui:ui", version.ref = "composeUi" }
+composeCompiler = { module = "androidx.compose.compiler:compiler", version.ref = "composeCompiler" }
 composeActivity = { module = "androidx.activity:activity-compose", version.ref = "composeActivity" }
-composeTooling = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "composeUi" }
+composeTooling = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "comopseTooling" }
 composeConstraint = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "composeConstraint" }
 composeMaterial = { module = "androidx.compose.material3:material3", version.ref = "composeMaterial" }
 composeViewModel = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "composeViewModel" }
@@ -38,12 +45,13 @@ retrofitConverter = { module = "com.squareup.retrofit2:converter-gson", version.
 dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 daggerCompiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
 accompanistSwipeRefresh = { module = "com.google.accompanist:accompanist-swiperefresh", version.ref = "accompanistSwipeRefresh" }
-firebaseAuth = { module = "com.google.firebase:firebase-auth-ktx"}
-firebaseFireStore = { module = "com.google.firebase:firebase-analytics-ktx"}
-firebaseAnalytics = { module = "com.google.firebase:firebase-firestore-ktx"}
+firebaseAuth = { module = "com.google.firebase:firebase-auth-ktx", version.ref = "firebaseAuth" }
+firebaseFireStore = { module = "com.google.firebase:firebase-firestore-ktx", version.ref = "fireStore" }
+firebaseAnalytics = { module = "com.google.firebase:firebase-analytics-ktx", version.ref = "firebaseAnalytics" }
 firebaseBom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 coroutinesPlayService = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services", version.ref = "coroutinesPlayService" }
 authPlayService = { module = "com.google.android.gms:play-services-auth", version.ref = "authPlayService" }
+coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 
 
 [bundles]
@@ -53,9 +61,3 @@ composeMaterial = ["composeMaterial", "composeMaterialWindowSize"]
 retrofit = ["retrofit", "retrofitConverter"]
 dagger = ["dagger", "daggerCompiler"]
 
-
-[plugins]
-
-androidApplication = { id = "com.android.application", version.ref = "android" }
-androidLibrary = { id = "com.android.application", version.ref = "android" }
-androidKotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

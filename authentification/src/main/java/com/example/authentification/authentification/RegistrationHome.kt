@@ -12,6 +12,6 @@ fun RegistrationHome() {
     val navController = rememberNavController()
 
     Box(modifier = Modifier.fillMaxSize()) {
-        RegistrationNavigation(navController = navController)
+        //RegistrationNavigation(navController = navController)
     }
 }

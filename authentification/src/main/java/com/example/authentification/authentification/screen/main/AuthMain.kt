@@ -1,7 +1,6 @@
 package com.example.authentification.authentification.screen.main
 
 import android.app.Activity.RESULT_OK
-import android.content.Intent
 import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.IntentSenderRequest
@@ -21,16 +20,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.music.MainActivity
-import com.example.music.R
-import com.example.music.data.repository.auth.AuthResult
 import com.example.authentification.authentification.RegistrationScreen
+import com.example.music.data.repository.auth.AuthResult
 import com.example.music.ui.theme.MusicTheme
 import com.google.android.gms.auth.api.identity.BeginSignInResult
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.GoogleAuthProvider.getCredential
 
-@Composable
+
+/*@Composable
 fun AuthMain(
     navController: NavController,
     viewModel: AuthViewModel
@@ -41,7 +39,7 @@ fun AuthMain(
     when(viewModel.signInState.value) {
         is AuthResult.Success -> {
             Log.d("zxc","signInState Success")
-            context.startActivity(Intent(context, MainActivity::class.java))
+            //context.startActivity(Intent(context, MainActivity::class.java))
         }
         else -> {
             Log.d("zxc","signInState fail")
@@ -54,7 +52,7 @@ fun AuthMainContent(
     navController: NavController,
     viewModel: AuthViewModel
 ) {
-    val painter = painterResource(id = R.drawable.ic_launcher_foreground)
+    val painter = painterResource(id = androidx.appcompat.R.drawable.abc_list_divider_mtrl_alpha)
     Column(
         modifier = Modifier
             .background(Color.Black)
@@ -202,7 +200,7 @@ fun GoogleButton(
         Row {
             Icon(
                 painter = painterResource(
-                    id = R.drawable.google
+                    id = androidx.core.R.drawable.notify_panel_notification_icon_bg
                 ),
                 contentDescription = "",
                 modifier = Modifier
@@ -225,4 +223,4 @@ fun DefaultPreview() {
             navController = NavController(LocalContext.current),
         )*/
     }
-}
+}*/

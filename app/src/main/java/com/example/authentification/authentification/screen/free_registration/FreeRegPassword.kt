@@ -19,7 +19,6 @@ import com.example.authentification.authentification.screen.main.AuthViewModel
 import com.example.music.ui.common.field.PasswordField
 import com.example.music.ui.common.top_bar.SimpleAppBar
 import com.example.music.ui.theme.MusicTheme
-import com.example.music.ui.theme.padding
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -62,8 +61,8 @@ fun FreeRegContent(
 
     Column(
         modifier = Modifier.padding(
-            start = MaterialTheme.padding.start,
-            end = MaterialTheme.padding.end
+            start = 10.dp/*MaterialTheme.padding.start*/,
+            end = 10.dp/*MaterialTheme.padding.end*/
         ),
     ) {
         PasswordField(

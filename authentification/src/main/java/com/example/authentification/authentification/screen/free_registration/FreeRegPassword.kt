@@ -1,6 +1,5 @@
 package com.example.authentification.authentification.screen.free_registration
 
-import android.content.Intent
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -13,15 +12,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.music.MainActivity
 import com.example.music.data.repository.auth.AuthResult
-import com.example.authentification.authentification.screen.main.AuthViewModel
 import com.example.music.ui.common.field.PasswordField
-import com.example.music.ui.common.top_bar.SimpleAppBar
-import com.example.music.ui.theme.MusicTheme
-import com.example.music.ui.theme.padding
 
-@OptIn(ExperimentalMaterial3Api::class)
+import com.example.music.ui.theme.MusicTheme
+
+/*@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FreeRegistrationPassword(
     navController: NavController,
@@ -62,8 +58,8 @@ fun FreeRegContent(
 
     Column(
         modifier = Modifier.padding(
-            start = MaterialTheme.padding.start,
-            end = MaterialTheme.padding.end
+            start = 10.dp/*MaterialTheme.padding.start,*/,
+            end = 10.dp/*MaterialTheme.padding.end*/
         ),
     ) {
         PasswordField(
@@ -96,7 +92,7 @@ fun CreateAccountButton(
     when(viewModel.signInState.value) {
         is AuthResult.Success -> {
             Log.d("zxc","signInState Success")
-            context.startActivity(Intent(context, MainActivity::class.java))
+            //context.startActivity(Intent(context, MainActivity::class.java))
         }
         else -> {
             Log.d("zxc","signInState fail")
@@ -143,4 +139,4 @@ fun FreeRegistrationPreview() {
             email = ""
         )*/
     }
-}
+}*/

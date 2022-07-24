@@ -24,7 +24,10 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 
@@ -35,7 +38,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
         freeCompilerArgs +=
-                "-Xjvm-default=all"
+            "-Xjvm-default=all"
 
     }
     buildFeatures {
@@ -43,7 +46,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.composeUi.get()
+        kotlinCompilerExtensionVersion = "1.2.0"
     }
     packagingOptions {
         resources {
@@ -53,10 +56,11 @@ android {
 }
 
 dependencies {
-    api(":navigation")
-    api(":core-network")
-    api(":authentification")
-    api(":module-injector")
+    implementation(project(mapOf("path" to ":navigation")))
+    implementation(project(mapOf("path" to ":authentification")))
+    implementation(project(mapOf("path" to ":common-ui-compose")))
+    implementation(project(mapOf("path" to ":module-injector")))
+    implementation(project(mapOf("path" to ":core-network")))
 
     implementation(libs.bundles.compose)
     implementation(libs.bundles.composeMaterial)
@@ -67,6 +71,7 @@ dependencies {
     implementation(libs.composeActivity)
     implementation(libs.composeConstraint)
     implementation(libs.composeLiveData)
+    implementation(libs.composeMaterial)
     implementation(libs.composeCoil)
     implementation(libs.composeNavigation)
     implementation(libs.accompanistSwipeRefresh)
@@ -76,4 +81,6 @@ dependencies {
     implementation(libs.firebaseFireStore)
     implementation(libs.coroutinesPlayService)
     implementation(libs.authPlayService)
+    implementation(libs.coroutines)
+    implementation(libs.composeUi)
 }

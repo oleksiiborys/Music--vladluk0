@@ -9,15 +9,6 @@ import com.example.music.*
 import com.example.music.addLibraryTopLevel
 import com.example.music.addMainTopLevel
 import com.example.music.addSearchTopLevel
-import com.example.music.di.DaggerScreenComponent
-import com.example.music.ui.screen.add_artist.AddArtist
-import com.example.music.ui.screen.add_artist.AddArtistVM
-import com.example.music.ui.screen.library.Library
-import com.example.music.ui.screen.library.LibraryVM
-import com.example.music.ui.screen.main.Main
-import com.example.music.ui.screen.premium.Premium
-import com.example.music.ui.screen.search.Search
-
 
 /*@ExperimentalAnimationApi
 @Composable
