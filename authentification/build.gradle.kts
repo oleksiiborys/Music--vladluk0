@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 android {
     compileSdk = 32
@@ -39,8 +40,10 @@ android {
     }
 }
 dependencies {
-    
-    implementation("androidx.appcompat:appcompat:1.4.2")
+
+    implementation(project(mapOf("path" to ":common-ui-compose")))
+    implementation(project(mapOf("path" to ":core-network")))
+    implementation(project(mapOf("path" to ":module-injector")))
 
     implementation(libs.androidXCore)
     implementation(libs.bundles.composeMaterial)
@@ -52,6 +55,5 @@ dependencies {
     implementation(libs.firebaseFireStore)
     implementation(libs.coroutines)
     implementation(libs.bundles.dagger)
-    implementation(project(mapOf("path" to ":common-ui-compose")))
-
+    kapt(libs.bundles.daggerKapt)
 }

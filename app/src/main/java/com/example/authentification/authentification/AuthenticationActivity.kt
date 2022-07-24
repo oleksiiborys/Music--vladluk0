@@ -18,8 +18,8 @@ import javax.inject.Inject
 
 class AuthenticationActivity : ComponentActivity() {
 
-    @Inject
-    lateinit var auth: FirebaseAuth
+    /*@Inject
+    lateinit var auth: FirebaseAuth*/
 
     lateinit var registrationComponent: RegistrationComponent
 
@@ -28,7 +28,7 @@ class AuthenticationActivity : ComponentActivity() {
         //registrationComponent.inject(this)
         super.onCreate(savedInstanceState)
 
-        checkIfAuth()
+        //checkIfAuth()
 
         setContent {
             MusicTheme {
@@ -41,13 +41,13 @@ class AuthenticationActivity : ComponentActivity() {
         }
     }
 
-    fun checkIfAuth() {
+    /*fun checkIfAuth() {
         if (auth.currentUser != null) {
             val intent = Intent(this, MainActivity::class.java);
             startActivity(intent);
             finish()
         }
-    }
+    }*/
 }
 
 internal val Context.registrationComponent: RegistrationComponent?

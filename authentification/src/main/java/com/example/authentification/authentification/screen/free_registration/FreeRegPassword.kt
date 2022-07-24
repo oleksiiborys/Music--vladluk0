@@ -12,8 +12,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.common_ui_compose.ui.PasswordField
 import com.example.music.data.repository.auth.AuthResult
-import com.example.music.ui.common.field.PasswordField
+import com.example.music.ui.common.top_bar.SimpleAppBar
 
 import com.example.music.ui.theme.MusicTheme
 
@@ -128,7 +129,7 @@ fun CreateAccountButton(
             )
         }
     }
-}
+}*/
 
 @Preview(showSystemUi = true)
 @Composable
@@ -139,4 +140,4 @@ fun FreeRegistrationPreview() {
             email = ""
         )*/
     }
-}*/
+}

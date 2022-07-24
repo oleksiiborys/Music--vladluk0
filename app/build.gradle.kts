@@ -83,4 +83,6 @@ dependencies {
     implementation(libs.authPlayService)
     implementation(libs.coroutines)
     implementation(libs.composeUi)
+
+    kapt(libs.bundles.daggerKapt)
 }

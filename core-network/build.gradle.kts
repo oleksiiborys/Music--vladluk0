@@ -1,7 +1,9 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
+
 android {
     compileSdk = 32
 
@@ -23,6 +25,7 @@ android {
         jvmTarget = "1.8"
         freeCompilerArgs +=
             "-Xjvm-default=all"
+
     }
     buildFeatures {
         compose = true
@@ -37,10 +40,14 @@ android {
         }
     }
 }
+
 dependencies {
+    implementation(project(mapOf("path" to ":module-injector")))
+
     implementation(libs.androidXCore)
     implementation(libs.composeMaterial)
-    implementation(libs.composeCompiler)
-    implementation(libs.composeNavigation)
-    implementation(libs.composeTooling)
+    implementation(libs.bundles.retrofit)
+    implementation(libs.firebaseAuth)
+    implementation(libs.bundles.dagger)
+    kapt(libs.bundles.daggerKapt)
 }

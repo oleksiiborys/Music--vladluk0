@@ -5,7 +5,7 @@ import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [CoreNetworkModule::class])
+@Component(modules = [CoreNetworkModule::class, CoreFirebaseModule::class])
 abstract class CoreNetworkComponent : CoreNetworkApi {
     companion object {
         @Volatile

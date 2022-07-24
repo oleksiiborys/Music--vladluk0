@@ -16,6 +16,8 @@ androidXCore = "1.8.0"
 androidXLifecycle = "2.5.0"
 retrofit = "2.9.0"
 dagger = "2.42"
+kaptDaggerProcessor = "2.15"
+kaptDaggerCompiler = "2.42"
 accompanistSwipeRefresh = "0.24.11-rc"
 firebaseBom = "30.3.0"
 fireStore = "24.2.1"
@@ -44,6 +46,8 @@ retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit
 retrofitConverter = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 daggerCompiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
+kaptDaggerProcessor = { module = "com.google.dagger:dagger-android-processor", version.ref = "kaptDaggerProcessor" }
+kaptDaggerCompiler = { module = "com.google.dagger:dagger-android-processor", version.ref = "kaptDaggerCompiler" }
 accompanistSwipeRefresh = { module = "com.google.accompanist:accompanist-swiperefresh", version.ref = "accompanistSwipeRefresh" }
 firebaseAuth = { module = "com.google.firebase:firebase-auth-ktx", version.ref = "firebaseAuth" }
 firebaseFireStore = { module = "com.google.firebase:firebase-firestore-ktx", version.ref = "fireStore" }
@@ -60,4 +64,5 @@ compose = ["composeUi", "composeTooling", "composeViewModel"]
 composeMaterial = ["composeMaterial", "composeMaterialWindowSize"]
 retrofit = ["retrofit", "retrofitConverter"]
 dagger = ["dagger", "daggerCompiler"]
+daggerKapt = ["kaptDaggerProcessor", "kaptDaggerCompiler"]
 

@@ -1,4 +1,4 @@
-package com.example.music.ui.common.field
+package com.example.common_ui_compose.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -9,33 +9,29 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.music.ui.theme.MusicTheme
 
 @Composable
-fun EmailField(
+fun PasswordField(
     modifier: Modifier = Modifier,
     textField: String,
     onEmailChange: (String) -> Unit,
-    mail: String
+    password: String
 ) {
     val focusManager = LocalFocusManager.current
 
     Column(
         modifier = Modifier.padding(
-            start = 10.dp/*MaterialTheme.padding.start*/,
+            start = 10.dp/*MaterialTheme.padding.start,*/,
             end = 10.dp/*MaterialTheme.padding.end*/
         ),
-        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
             text = textField,
@@ -46,7 +42,7 @@ fun EmailField(
         )
 
         TextField(
-            value = mail,
+            value = password,
             onValueChange = {
                 onEmailChange.invoke(it)
             },
@@ -61,16 +57,5 @@ fun EmailField(
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
             maxLines = 1
         )
-    }
-}
-
-@Preview(showSystemUi = true)
-@Composable
-fun FreeRegistrationPreview() {
-    MusicTheme {
-        /*FreeRegistrationPassword(
-            navController = NavController(LocalContext.current),
-            email = ""
-        )*/
     }
 }

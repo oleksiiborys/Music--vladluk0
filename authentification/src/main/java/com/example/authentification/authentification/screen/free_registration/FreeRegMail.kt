@@ -12,7 +12,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.authentification.authentification.RegistrationScreen
-import com.example.music.ui.common.field.EmailField
+import com.example.common_ui_compose.ui.EmailField
 import com.example.music.ui.common.top_bar.SimpleAppBar
 import com.example.music.ui.theme.MusicTheme
 

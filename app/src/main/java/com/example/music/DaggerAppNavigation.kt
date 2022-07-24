@@ -20,7 +20,6 @@ internal fun DaggerAppNavigation(
     navController: NavHostController,
     modifier: Modifier = Modifier,
 ) {
-    Log.d("zxc", "DaggerAppNavigation")
     NavHost(
         navController = navController,
         startDestination = AuthenticationDirections.root.destination,

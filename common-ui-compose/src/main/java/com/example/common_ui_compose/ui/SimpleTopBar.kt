@@ -15,6 +15,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.common_ui_compose.R
 
 @Composable
 fun SimpleAppBar(
@@ -25,7 +26,7 @@ fun SimpleAppBar(
         modifier = Modifier.background(Color.Black)
     ) {
         Icon(
-            painter = painterResource(id = androidx.appcompat.R.drawable.abc_list_divider_mtrl_alpha),
+            painter = painterResource(id = R.drawable.ic_back_arrow_24),
             contentDescription = "",
             tint = Color.White,
             modifier = Modifier
