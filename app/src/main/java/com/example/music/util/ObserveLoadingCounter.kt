@@ -1,6 +1,5 @@
 package com.example.music.util
 
-import com.example.music.data.repository.artists.MusicResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.map
@@ -24,20 +23,8 @@ class ObserveLoadingCounter {
     }
 }
 
-suspend fun <T> Flow<MusicResult<T>>.observeStatus(
-    observerLoading: ObserveLoadingCounter
-) =
-    collect { status ->
-        when(status) {
-            is MusicResult.Started -> observerLoading.increase()
-            is MusicResult.Finished -> observerLoading.decrease()
-            is MusicResult.Error -> observerLoading.decrease()
-            else -> {}
-        }
-    }
-
-/*sealed class InvokeStatus
+sealed class InvokeStatus
 object InvokeStarted : InvokeStatus()
 object InvokeLoading : InvokeStatus()
 object InvokeFinished : InvokeStatus()
-object InvokeError : InvokeStatus()*/
+object InvokeError : InvokeStatus()

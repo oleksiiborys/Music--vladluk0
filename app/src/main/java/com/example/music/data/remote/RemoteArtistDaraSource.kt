@@ -11,24 +11,9 @@ class RemoteArtistDaraSource @Inject constructor(
     private val artistsService: ArtistsService
 ) {
 
-    /*suspend fun getArtists(artistsId: String): Flow<List<Artist>> {
-        return searchArtists(artistsId, "")
-    }*/
-
-    /*fun searchArtists(artistsId: String, query: String): Flow<List<Artist>> {
-        return flow {
-
-        }
-    }*/
-
-    fun searchArtists(artistsId: String, query: String): Flow<List<Artist>> = flow {
+    fun getArtists(artistsId: String): Flow<List<Artist>> = flow {
         val artists: List<Artist> =
             artistsService.fetchArtists(artistsId).body()?.artists ?: listOf()
-        artists.map { artist ->
-            artists.filter {
-                artist.name.contains(query)
-            }
-        }
         emit(artists)
     }.flowOn(Dispatchers.IO)
 }

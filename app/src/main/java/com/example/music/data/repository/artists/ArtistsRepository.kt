@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 
 interface ArtistsRepository {
-    fun getArtists(artistsId: String): Flow<MusicResult<List<Artist>>>
+    fun getArtists(artistsId: String): Flow<List<Artist>>
 }

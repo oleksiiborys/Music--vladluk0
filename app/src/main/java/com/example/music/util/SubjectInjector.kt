@@ -1,9 +1,11 @@
 package com.example.music.util
 
-import android.util.Log
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.BufferOverflow
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flow
 
 abstract class SubjectInjector<P, T> {
 
@@ -16,7 +18,16 @@ abstract class SubjectInjector<P, T> {
     @OptIn(ExperimentalCoroutinesApi::class)
     val flow: Flow<T> = paramState.flatMapLatest {
         createObservable(it)
-    }.distinctUntilChanged()
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val stateFlow: Flow<InvokeStatus> = paramState.flatMapLatest {
+        flow {
+            emit(InvokeStarted)
+            createObservable(it)
+            emit(InvokeFinished)
+        }
+    }
 
     operator fun invoke(params: P) {
         paramState.tryEmit(params)
