@@ -6,5 +6,4 @@ import com.google.firebase.auth.FirebaseAuth
 
 interface CoreNetworkApi : BaseApi {
     fun artistsService(): ArtistsService
-    fun firebaseAuth(): FirebaseAuth
 }

@@ -20,6 +20,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.authentification.R
 import com.example.authentification.authentification.RegistrationScreen
 import com.example.music.data.repository.auth.AuthResult
 import com.example.music.ui.theme.MusicTheme
@@ -28,7 +29,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.GoogleAuthProvider.getCredential
 
 
-/*@Composable
+@Composable
 fun AuthMain(
     navController: NavController,
     viewModel: AuthViewModel
@@ -52,7 +53,7 @@ fun AuthMainContent(
     navController: NavController,
     viewModel: AuthViewModel
 ) {
-    val painter = painterResource(id = androidx.appcompat.R.drawable.abc_list_divider_mtrl_alpha)
+    val painter = painterResource(id = R.drawable.ic_top_main_picture)
     Column(
         modifier = Modifier
             .background(Color.Black)
@@ -186,6 +187,7 @@ fun GoogleButton(
         is AuthResult.Fail -> {
             Log.d("zxc", "Fail")
         }
+        else -> {}
     }
 
     Button(
@@ -223,4 +225,4 @@ fun DefaultPreview() {
             navController = NavController(LocalContext.current),
         )*/
     }
-}*/
+}

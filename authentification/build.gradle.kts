@@ -42,8 +42,9 @@ android {
 dependencies {
 
     implementation(project(mapOf("path" to ":common-ui-compose")))
-    implementation(project(mapOf("path" to ":core-network")))
     implementation(project(mapOf("path" to ":module-injector")))
+    implementation(project(mapOf("path" to ":core-firebase")))
+    implementation(project(mapOf("path" to ":base-android")))
 
     implementation(libs.androidXCore)
     implementation(libs.bundles.composeMaterial)
@@ -54,6 +55,7 @@ dependencies {
     implementation(libs.firebaseBom)
     implementation(libs.firebaseFireStore)
     implementation(libs.coroutines)
+    implementation(libs.coroutinesPlayService)
     implementation(libs.bundles.dagger)
     kapt(libs.bundles.daggerKapt)
 }
