@@ -14,14 +14,14 @@ import javax.inject.Inject
 
 class AuthRepository @Inject constructor(
     private val oneTapSignInClient: SignInClient,
-    private val signInRequest: BeginSignInRequest,
+    //private val signInRequest: BeginSignInRequest,
     private val auth: FirebaseAuth,
-    private val firestore: FirebaseFirestore
+    //private val firestore: FirebaseFirestore
 ){
     fun onTapSignInWithGoogle() = flow {
         try {
-            val result = oneTapSignInClient.beginSignIn(signInRequest).await()
-            emit(AuthResult.Success(result))
+            //val result = oneTapSignInClient.beginSignIn(signInRequest).await()
+            //emit(AuthResult.Success(result))
         } catch (exception: Exception) {
             Log.d("zxc", exception.toString())
             emit(AuthResult.Fail)
@@ -52,11 +52,11 @@ class AuthRepository @Inject constructor(
     }
 
     private fun addUserToFireStore() {
-        auth.currentUser?.uid.let { id ->
+        /*auth.currentUser?.uid.let { id ->
             firestore
                 .collection("users")
 
-        }
+        }*/
     }
 }
 

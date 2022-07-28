@@ -15,12 +15,11 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.music.MainActivity
 import com.example.music.data.repository.auth.AuthResult
-import com.example.authentification.authentification.screen.main.AuthViewModel
 import com.example.music.ui.common.field.PasswordField
 import com.example.music.ui.common.top_bar.SimpleAppBar
 import com.example.music.ui.theme.MusicTheme
 
-@OptIn(ExperimentalMaterial3Api::class)
+/*@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FreeRegistrationPassword(
     navController: NavController,
@@ -142,4 +141,4 @@ fun FreeRegistrationPreview() {
             email = ""
         )*/
     }
-}
+}*/

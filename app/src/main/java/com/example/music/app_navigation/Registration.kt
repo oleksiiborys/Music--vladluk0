@@ -11,7 +11,6 @@ import com.example.authentification.authentification.screen.free_registration.Fr
 import com.example.authentification.authentification.screen.free_registration.FreeRegistrationPassword
 import com.example.authentification.authentification.screen.log_in.LogIn
 import com.example.authentification.authentification.screen.main.AuthMain
-import com.example.authentification.authentification.screen.main.AuthViewModel
 
 
 @Composable

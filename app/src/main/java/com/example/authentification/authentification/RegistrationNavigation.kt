@@ -1,18 +1,8 @@
 package com.example.authentification.authentification
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
-import androidx.navigation.NavController
-import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import com.example.music.Screen
-import com.example.authentification.authentification.screen.free_registration.FreeRegistrationMail
-import com.example.authentification.authentification.screen.free_registration.FreeRegistrationPassword
-import com.example.authentification.authentification.screen.log_in.LogIn
-import com.example.authentification.authentification.screen.main.AuthMain
-import com.example.authentification.authentification.screen.main.AuthViewModel
 
 sealed class RegistrationScreen(val route: String) {
 
@@ -39,14 +29,14 @@ fun RegistrationNavigation(
         navController = navController,
         startDestination = RegistrationScreen.Main.route
     ) {
-        addMain(navController)
+       /* addMain(navController)
         addFreeMail(navController)
         addFreePassword(navController)
-        addLogin(navController)
+        addLogin(navController)*/
     }
 }
 
-fun NavGraphBuilder.addMain(
+/*fun NavGraphBuilder.addMain(
     navController: NavController
 ) {
     composable(
@@ -96,4 +86,4 @@ fun NavGraphBuilder.addLogin(
     ) {
         LogIn(navController = navController)
     }
-}
+}*/

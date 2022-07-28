@@ -11,7 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.music.MainActivity
-import com.example.music.di.registration.RegistrationComponent
 import com.example.music.ui.theme.MusicTheme
 import com.google.firebase.auth.FirebaseAuth
 import javax.inject.Inject
@@ -21,7 +20,7 @@ class AuthenticationActivity : ComponentActivity() {
     /*@Inject
     lateinit var auth: FirebaseAuth*/
 
-    lateinit var registrationComponent: RegistrationComponent
+    //lateinit var registrationComponent: RegistrationComponent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         //registrationComponent = appComponent.registrationComponent().bindContext(this).build()
@@ -35,7 +34,7 @@ class AuthenticationActivity : ComponentActivity() {
                 Box(
                     modifier = Modifier.fillMaxSize(),
                 ) {
-                    RegistrationHome()
+                    //RegistrationHome()
                 }
             }
         }
@@ -49,12 +48,6 @@ class AuthenticationActivity : ComponentActivity() {
         }
     }*/
 }
-
-internal val Context.registrationComponent: RegistrationComponent?
-    get() = when (this) {
-        is AuthenticationActivity -> registrationComponent
-        else -> null
-    }
 
 @Preview(showSystemUi = true)
 @Composable

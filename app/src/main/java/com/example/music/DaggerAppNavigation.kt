@@ -12,6 +12,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
+import com.example.authentification.authentification.auth_impl.AuthComponentHolder
 import com.example.authentification.authentification.screen.main.AuthMain
 import com.example.navigation.graph.AuthenticationDirections
 

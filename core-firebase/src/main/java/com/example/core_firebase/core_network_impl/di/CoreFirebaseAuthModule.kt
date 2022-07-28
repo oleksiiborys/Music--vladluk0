@@ -12,7 +12,7 @@ import dagger.Provides
 
 @Module
 class CoreFirebaseAuthModule {
-
+    
     @Provides
     fun provideAuth(): FirebaseAuth = Firebase.auth
 
