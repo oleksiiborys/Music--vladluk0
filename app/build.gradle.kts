@@ -57,7 +57,7 @@ android {
 
 dependencies {
     implementation(project(mapOf("path" to ":navigation")))
-    implementation(project(mapOf("path" to ":authentification")))
+    implementation(project(mapOf("path" to ":feature-authentification")))
     implementation(project(mapOf("path" to ":common-ui-compose")))
     implementation(project(mapOf("path" to ":module-injector")))
     implementation(project(mapOf("path" to ":core-network")))
@@ -83,6 +83,8 @@ dependencies {
     implementation(libs.authPlayService)
     implementation(libs.coroutines)
     implementation(libs.composeUi)
+    implementation(project(mapOf("path" to ":base-android")))
+    implementation(project(mapOf("path" to ":core-firebase")))
 
     kapt(libs.bundles.daggerKapt)
 }

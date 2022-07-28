@@ -1,16 +1,12 @@
 package com.example.music.app_navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.*
 import androidx.navigation.compose.composable
-import com.example.music.Screen
 import com.example.authentification.authentification.RegistrationScreen
-import com.example.authentification.authentification.registrationComponent
 import com.example.authentification.authentification.screen.free_registration.FreeRegistrationMail
-import com.example.authentification.authentification.screen.free_registration.FreeRegistrationPassword
 import com.example.authentification.authentification.screen.log_in.LogIn
-import com.example.authentification.authentification.screen.main.AuthMain
+import com.example.music.Screen
 
 
 @Composable
@@ -34,11 +30,11 @@ fun NavGraphBuilder.addMain(
     composable(
         route = Screen.Main.route
     ) {
-        val context = LocalContext.current
+        /*val context = LocalContext.current
         val registrationComponent = context.registrationComponent
         checkNotNull(registrationComponent) { "registrationComponent null" }
         val viewModel = registrationComponent.factory.create(AuthViewModel::class.java)
-        AuthMain(navController, viewModel)
+        AuthMain(navController, viewModel)*/
     }
 }
 
@@ -58,7 +54,7 @@ fun NavGraphBuilder.addFreePassword(
     composable(
         route = RegistrationScreen.FreePassword.route
     ) { backStackEntry ->
-        val mail = backStackEntry.arguments?.getString("mail")
+        /*val mail = backStackEntry.arguments?.getString("mail")
         checkNotNull(mail) { "mail in null" }
 
         val context = LocalContext.current
@@ -66,7 +62,7 @@ fun NavGraphBuilder.addFreePassword(
         checkNotNull(registrationComponent) { "registrationComponent null" }
         val viewModel = registrationComponent.factory.create(AuthViewModel::class.java)
 
-        FreeRegistrationPassword(navController, viewModel, mail)
+        FreeRegistrationPassword(navController, viewModel, mail)*/
     }
 }
 

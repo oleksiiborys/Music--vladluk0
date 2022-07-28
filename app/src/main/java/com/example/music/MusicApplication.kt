@@ -13,6 +13,12 @@ class MusicApplication : Application() {
         super.onCreate()
         appComponent = DaggerApplicationComponent.builder().build()
     }
+
+    companion object {
+        @Volatile
+        lateinit var appContext: Context
+            private set
+    }
 }
 
 val Context.appComponent: ApplicationComponent

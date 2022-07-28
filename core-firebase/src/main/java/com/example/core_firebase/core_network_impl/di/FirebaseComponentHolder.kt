@@ -2,9 +2,10 @@ package com.example.core_firebase.core_network_impl.di
 
 import com.example.core_network.core_network_api.di.CoreFirebaseApi
 import com.example.core_network.core_network_impl.di.CoreFirebaseComponent
+import com.example.core_network.core_network_impl.di.DaggerCoreFirebaseComponent
 import com.example.moduleinjector.ComponentHolder
 
-class FirebaseComponentHolder : ComponentHolder<CoreFirebaseApi, FirebaseDependencies> {
+object FirebaseComponentHolder : ComponentHolder<CoreFirebaseApi, FirebaseDependencies> {
     var firebaseComponent: CoreFirebaseComponent? = null
 
     override fun get(): CoreFirebaseApi {
@@ -15,12 +16,12 @@ class FirebaseComponentHolder : ComponentHolder<CoreFirebaseApi, FirebaseDepende
     override fun init(dependencies: FirebaseDependencies) {
         if (firebaseComponent == null) {
             synchronized(FirebaseComponentHolder::class) {
-                //firebaseComponent = Dagg
+                firebaseComponent = CoreFirebaseComponent.initAndGet(dependencies)
             }
         }
     }
 
     override fun reset() {
-        TODO("Not yet implemented")
+        firebaseComponent = null
     }
 }

@@ -16,7 +16,7 @@ class AuthRepository @Inject constructor(
     private val oneTapSignInClient: SignInClient,
     //private val signInRequest: BeginSignInRequest,
     private val auth: FirebaseAuth,
-    //private val firestore: FirebaseFirestore
+    private val firestore: FirebaseFirestore
 ){
     fun onTapSignInWithGoogle() = flow {
         try {
@@ -52,11 +52,11 @@ class AuthRepository @Inject constructor(
     }
 
     private fun addUserToFireStore() {
-        /*auth.currentUser?.uid.let { id ->
+        auth.currentUser?.uid.let { id ->
             firestore
                 .collection("users")
 
-        }*/
+        }
     }
 }
 
