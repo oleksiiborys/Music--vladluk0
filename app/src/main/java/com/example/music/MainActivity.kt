@@ -9,15 +9,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.authentification.authentification.auth_api.AuthApi
 import com.example.music.ui.theme.MusicTheme
 import com.example.navigation.graph.NavigationManager
 import javax.inject.Inject
+import javax.inject.Provider
 
 class MainActivity : ComponentActivity() {
 
     @Inject
     lateinit var navigationManager: NavigationManager
 
+    @Inject
+    lateinit var auth: Provider<AuthApi>
     override fun onCreate(savedInstanceState: Bundle?) {
         appComponent.inject(this)
         super.onCreate(savedInstanceState)

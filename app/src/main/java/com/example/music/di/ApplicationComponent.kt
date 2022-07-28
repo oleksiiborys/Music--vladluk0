@@ -1,6 +1,8 @@
 package com.example.music.di
 
 import android.content.Context
+import com.example.authentification.authentification.auth_api.AuthApi
+import com.example.authentification.authentification.auth_impl.AuthComponentHolder
 import com.example.authentification.authentification.auth_impl.AuthDependencies
 import com.example.core_firebase.core_network_impl.di.FirebaseComponentHolder
 import com.example.core_firebase.core_network_impl.di.FirebaseDependencies
@@ -36,9 +38,11 @@ class AppModule {
     @Provides
     fun providesNavigationManager() = NavigationManager()
 
+    @Singleton
     @Provides
     fun provideContext(): Context = MusicApplication.appContext
 
+    @Singleton
     @Provides
     fun provideFirebaseDependencies(context: Context): FirebaseDependencies {
         return object : FirebaseDependencies {
@@ -52,6 +56,7 @@ class AppModule {
         return FirebaseComponentHolder.get()
     }
 
+    @Singleton
     @Provides
     fun provideAuthFeatureDependencies(firebaseApi: CoreFirebaseApi): AuthDependencies {
         return object : AuthDependencies {
@@ -61,5 +66,12 @@ class AppModule {
 
             override fun firestore(): FirebaseFirestore = firebaseApi.firestore()
         }
+    }
+
+    @Singleton
+    @Provides
+    fun provideAuthFeatureApi(authDependencies: AuthDependencies): AuthApi {
+        AuthComponentHolder.init(authDependencies)
+        return AuthComponentHolder.get()
     }
 }
