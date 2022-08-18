@@ -13,7 +13,8 @@ import dagger.Component
 import dagger.Module
 import dagger.multibindings.IntoMap
 
-@Component(modules = [ScreenModule::class],
+@Component(modules = [ScreenModule::class,
+                     FirestoreModule::class],
     dependencies = [ApplicationComponent::class])
 @ScreenScope
 interface ScreenComponent {

@@ -3,14 +3,17 @@ package com.example.music.data.repository.artists
 import android.util.Log
 import com.example.music.data.model.artist.Artist
 import com.example.music.data.remote.RemoteArtistDaraSource
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.*
 import retrofit2.HttpException
 import javax.inject.Inject
 
 class ArtistsRepositoryImpl @Inject constructor(
-    private val remoteArtistDaraSource: RemoteArtistDaraSource
+    private val remoteArtistDaraSource: RemoteArtistDaraSource,
+    private val firestore: FirebaseFirestore
 ) : ArtistsRepository {
 
     /*suspend fun findArtists(artistsId: String, query: String): Result<Artists?> {
@@ -30,19 +33,39 @@ class ArtistsRepositoryImpl @Inject constructor(
 
     fun searchArtists(artistsId: String, query: String): Flow<MusicResult<List<Artist>>> {
         return flow {
-            val artistsList: Flow<List<Artist>> = remoteArtistDaraSource.searchArtists(artistsId, query)
+            val artistsList: Flow<List<Artist>> =
+                remoteArtistDaraSource.searchArtists(artistsId, query)
             Log.d("zxc", "ArtistsRepositoryImpl searchArtists artistsList: $artistsList")
             artistsList.collect { artists ->
                 if (artists.isEmpty()) {
                     Log.d("zxc", "ArtistsRepositoryImpl searchArtists empty")
                     emit(MusicResult.Error(message = "No data"))
-                }
-                else {
+                } else {
                     Log.d("zxc", "ArtistsRepositoryImpl searchArtists Success")
                     emit(MusicResult.Success.Value(artists))
                 }
             }
         }
+    }
+
+    fun addToFirestore(artist: Artist) = callbackFlow {
+        val user = hashMapOf(
+            "name" to artist.name,
+            "image" to artist.images[0]
+        )
+
+        firestore.collection("users")
+            .add(user)
+            .addOnSuccessListener {
+                Log.d("zxc", "added")
+                trySend(MusicResult.Success.Value(true))
+            }
+            .addOnFailureListener {
+                Log.d("zxc", it.toString())
+                trySend(MusicResult.Error(message = "user didn't add to firestore"))
+            }
+
+        awaitClose { channel.close() }
     }
 }
 

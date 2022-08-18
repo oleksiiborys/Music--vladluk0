@@ -20,7 +20,7 @@ interface ArtistsService {
     @Headers(
         "Accept: application/json",
         "Content-Type: application/json",
-        "Authorization: Bearer BQA-apn2omHeityUI15Qww4nl95FGONXR8EPpQTI-wU3u5L8mymGHPkFufDM84hqzmR9Db38PoqDq3f_u6URA7g3PV-aGvmb2aYrVQsJbKGLu4_5ls1z3bCzKrxd_uJ8Uiw3vA5df_EEYoy70NHAJlx-pE_kEr7wC1PbZY6COJY0nxbc7mbnB1B6tXGyKxvkRI0-tbg7",
+        "Authorization: Bearer BQClUjICqD6IHWf961WljD6Kw_E7qFGDNhgsxyjvoj4xDicD6K8Nds4X9sNqY__Nh8FqNa5nCjao_8WuppsMo9iq3Jd0hpZqyuIegdZp8Jg_YJahrF7nw50QzDHjZXtZ4YUs6qQCj7sIUZSM4mAiV1edUazRvEVhxVKMtgodOGWEhbUz1RAn0Z4uuJ0Ahr1sIrJCjkyz",
         /*"X-RapidAPI-Host: spotify23.p.rapidapi.com"*/
     )
     @GET("artists/")

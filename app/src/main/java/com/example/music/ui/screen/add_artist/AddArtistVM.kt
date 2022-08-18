@@ -10,6 +10,7 @@ import com.example.music.domain.observable.ObserveArtists
 import com.example.music.util.ObserveLoadingCounter
 import com.example.music.util.UiMessage
 import com.example.music.util.UiMessageManager
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -27,7 +28,7 @@ data class AddArtistViewState(
 @OptIn(FlowPreview::class)
 class AddArtistVM @Inject constructor(
     val observeArtists: ObserveArtists,
-    repositoryImpl: ArtistsRepositoryImpl
+    val repositoryImpl: ArtistsRepositoryImpl,
 ) : ViewModel() {
 
     private val searchQuery = MutableStateFlow("")
@@ -82,6 +83,10 @@ class AddArtistVM @Inject constructor(
     }
 
     fun artistsSelected(artist: Artist) {
+        viewModelScope.launch {
+            repositoryImpl.addToFirestore(artist).collect()
+        }
+
         /*_state.update {
             it.copy(
                 snackBarText = artist.name
