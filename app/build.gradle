@@ -101,4 +101,7 @@ dependencies {
     //Play Services
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$play_services_version"
     implementation "com.google.android.gms:play-services-auth:$play_services_auth_version"
+
+   // implementation("androidx.paging:paging-runtime:$paging_version")
+   // implementation("androidx.paging:paging-compose:1.0.0-alpha16")
 }

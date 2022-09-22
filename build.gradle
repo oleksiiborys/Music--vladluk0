@@ -6,6 +6,7 @@ buildscript {
         play_services_version = "1.6.0"
         play_services_auth_version = "20.2.0"
         compose_version = '1.2.0-beta03'
+        paging_version = "3.1.1"
     }
     dependencies {
         classpath 'com.google.gms:google-services:4.3.13'

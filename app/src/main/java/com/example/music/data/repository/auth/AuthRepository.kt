@@ -24,7 +24,7 @@ class AuthRepository @Inject constructor(
             val result = oneTapSignInClient.beginSignIn(signInRequest).await()
             emit(AuthResult.Success(result))
         } catch (exception: Exception) {
-            Log.d("zxc", exception.toString())
+            Log.d("zxc", "onTapSignInWithGoogle ${exception.message}")
             emit(AuthResult.Fail)
         }
     }.flowOn(Dispatchers.IO)
@@ -35,6 +35,7 @@ class AuthRepository @Inject constructor(
             val isNewUser = authResult.additionalUserInfo?.isNewUser
             emit(AuthResult.Success(isNewUser))
         } catch (e: Exception) {
+            Log.d("zxc", "firebaseSignInWithGoogle $e")
             emit(AuthResult.Fail)
         }
     }

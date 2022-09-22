@@ -35,9 +35,13 @@ class AuthViewModel @Inject constructor(
     }
 
     fun signInWithGoogle(googleCredential: AuthCredential) = viewModelScope.launch {
-        Log.d("zxc", "signInWithGoogle")
-        authRepository.firebaseSignInWithGoogle(googleCredential).collect { response ->
-            _signInState.value = response
+        try {
+            Log.d("zxc", "signInWithGoogle")
+            authRepository.firebaseSignInWithGoogle(googleCredential).collect { response ->
+                _signInState.value = response
+            }
+        } catch (e: Exception) {
+            Log.d("zxc", "signInWithGoogle $e")
         }
     }
 

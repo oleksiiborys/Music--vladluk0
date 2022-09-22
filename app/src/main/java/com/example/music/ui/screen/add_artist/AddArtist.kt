@@ -87,55 +87,6 @@ private fun AddArtistContent(
 
 }
 
-/*@Composable
-private fun AddArtistContent(
-    artists: List<Artist>,
-    isRefreshing: Boolean
-) {
-    ConstraintLayout {
-        val (text, search, list_of_artists) = createRefs()
-
-        val contentStart = createGuidelineFromStart(10.dp)
-        val contentEnd = createGuidelineFromEnd(10.dp)
-
-        Text(
-            text = stringResource(id = R.string.add_artist_text),
-            fontSize = 30.sp,
-            fontWeight = FontWeight.Bold,
-            lineHeight = 40.sp,
-            modifier = Modifier
-                .constrainAs(text) {
-                    top.linkTo(parent.top)
-                    start.linkTo(contentStart)
-                    width = Dimension.wrapContent
-                    height = Dimension.wrapContent
-                }
-                .fillMaxHeight()
-        )
-
-        SearchBar(modifier = Modifier
-            .heightIn(40.dp)
-            .constrainAs(search) {
-                start.linkTo(contentStart)
-                top.linkTo(text.bottom, 20.dp)
-                end.linkTo(contentEnd)
-                width = Dimension.fillToConstraints
-            })
-
-        AddArtistArtistList(
-            artists = artists,
-            modifier = Modifier.constrainAs(list_of_artists) {
-                top.linkTo(search.bottom, 25.dp)
-                bottom.linkTo(parent.bottom)
-                end.linkTo(contentEnd)
-                start.linkTo(contentStart)
-                height = Dimension.fillToConstraints
-            },
-            isRefreshing = isRefreshing
-        )
-    }
-}*/
-
 @Composable
 private fun SearchBar(
     modifier: Modifier = Modifier,
