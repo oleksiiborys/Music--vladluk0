@@ -1,6 +1,7 @@
 package com.example.music.app_navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.*
 import androidx.navigation.compose.composable
 import com.example.authentification.authentification.RegistrationScreen
@@ -30,11 +31,11 @@ fun NavGraphBuilder.addMain(
     composable(
         route = Screen.Main.route
     ) {
-        /*val context = LocalContext.current
+        val context = LocalContext.current
         val registrationComponent = context.registrationComponent
         checkNotNull(registrationComponent) { "registrationComponent null" }
         val viewModel = registrationComponent.factory.create(AuthViewModel::class.java)
-        AuthMain(navController, viewModel)*/
+        AuthMain(navController, viewModel)
     }
 }
 
